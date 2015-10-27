@@ -1,8 +1,9 @@
-#TODO: COMPILE
-echo "Building project"
-javac ../src/HelloWorld.java
-echo "Build complete, running project"
-#Eg veit að þetta er ekki sniðugt, er bara að athuga ferlið
-cd ../src
-java HelloWorld
+mvn -q package
 
+if [ $? -ne 0 ]; then
+    echo "build failed"
+    exit 1
+fi
+
+cp target/tictactoe-jar-with-dependencies.jar $1
+mvn clean

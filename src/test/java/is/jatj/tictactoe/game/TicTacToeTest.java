@@ -1,27 +1,27 @@
-package main.java.is.jatj.tictactoe.game;
+package test.java.is.jatj.tictactoe.game;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
-public class TicTacToe {
-	private char[][] board;
-	private  char[] player;
-	private int currentPlayer;
+public class TicTacToeTest {
+	public char[][] board;
+	public  char[] player;
+	public int currentPlayer;
 	
-	private TicTacToe()
+	public TicTacToe()
 	{
 		initializePlayer();
 		initializeBoard();
 	}
-	private void initializePlayer()
+	public void initializePlayer()
 	{
 		player = new char[2];		
 		player[0] = 'O';
 		player[1] = 'X';
 		currentPlayer = 0;
 	}
-	private void initializeBoard()
+	public void initializeBoard()
 	{
 		board = new char[3][3];
 		int counter = 1;
@@ -39,7 +39,7 @@ public class TicTacToe {
 		board[move/3][move%3] = player[n];
 		
 	}
-	private void displayBoard()
+	public void displayBoard()
 	{
 		StdOut.println();
 		for(int i = 0; i < 3; i++)
