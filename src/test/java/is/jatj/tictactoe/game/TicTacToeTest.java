@@ -109,21 +109,13 @@ public class TicTacToeTest {
 			StdOut.println();
 		}
 	};
-
- 	public int getInput()
-	{
-		In in = new In();
-		
-		String move = in.readString();
-		assert move.isNumber();
-			
-	}
 	public static void start(TicTacToeTest game)
 	{
+		In in = new In();
 		while(true)
 		{
 			StdOut.print("Player " + game.player[game.currentPlayer] + " select you're move: ");
-			int move = getInput();
+			int move = in.readInt() - 1;
 
 			game.makeMove(move, game.currentPlayer);
 			game.displayBoard();
