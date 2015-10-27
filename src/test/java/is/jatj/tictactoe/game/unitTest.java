@@ -80,4 +80,21 @@ public class unitTest{
 			assertEquals(true, game.checkForWinner());
 			
 		}
+		@Test
+		public void testmove() {
+			assertEquals(true, game.isMoveLegal(1));
+		}
+		@Test
+		public void testmovetohigh() {
+			assertEquals(false, game.isMoveLegal(11));
+		}
+		@Test
+		public void testmovenegative() {
+			assertEquals(false, game.isMoveLegal(-1));
+		}
+		@Test
+		public void testmoveDoneBefore() {
+			game.makeMove(1, 0);
+			assertEquals(false, game.isMoveLegal(1));
+		}
 }
