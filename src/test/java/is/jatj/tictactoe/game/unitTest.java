@@ -16,11 +16,14 @@ public class unitTest{
 
 	TicTacToeTest game = new TicTacToeTest();
 
+	// prófa að gera eitt move
 	@Test
 	public void testMakeMove() {
 		game.makeMove(0, 0);
 		assertEquals('O', game.board[0][0]);
 	}
+
+	// sjá hvort að playerinn verður til rétt
 	@Test
 		public void testinitializePlayer() {
 			game.initializePlayer();
@@ -28,6 +31,7 @@ public class unitTest{
 			assertEquals('X', game.player[1]);
 		}
 
+		// sjá hvort að borðið verður ekki til rétt
 		@Test
 		public void testintializeBoard() {
 			game.initializeBoard();
@@ -54,7 +58,7 @@ public class unitTest{
 				}
 			}	
 		}
-
+		// test til að tjekka á winnerum í leiknum
 		@Test
 		public void testWinnerH() {
 			game.makeMove(0, 0);
@@ -80,6 +84,10 @@ public class unitTest{
 			assertEquals(true, game.checkForWinner());
 			
 		}
+
+		// hérna erum við að testa nokkur move
+		// hvort það virki og hvernig hann bregst við 
+		// röngum inputum
 		@Test
 		public void testmove() {
 			assertEquals(true, game.isMoveLegal(1));
@@ -97,4 +105,6 @@ public class unitTest{
 			game.makeMove(1, 0);
 			assertEquals(false, game.isMoveLegal(1));
 		}
+
+		
 }
