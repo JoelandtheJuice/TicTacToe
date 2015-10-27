@@ -39,6 +39,50 @@ public class TicTacToeTest {
 		board[move/3][move%3] = player[n];
 		
 	}
+	public boolean checkForWinner()
+	{
+		boolean winnerFlag = false;
+		boolean rightAngle = true;
+		boolean leftAngle = true;
+		
+		for(int i = 0; i < 3; i++)
+		{
+			boolean vertical = true;
+			boolean horizontal = true;
+			for(int j = 0; j < 3; j++)
+			{
+				if(board[i][j] != player[currentPlayer])
+				{
+					vertical = false;
+				}
+				if(board[j][i] != player[currentPlayer])
+				{
+					horizontal = false;
+				}
+				
+			}
+			if(vertical || horizontal)
+			{
+				winnerFlag = true;
+				break;
+			}
+			
+			if(board[i][i] != player[currentPlayer])
+			{
+				rightAngle = false;
+			}
+			if(board[i][2-i] != player[currentPlayer])
+			{
+				leftAngle = false;
+			}
+			
+		}
+		if(rightAngle || leftAngle)
+		{
+			winnerFlag = true;
+		}
+		return winnerFlag;
+	}
 	public void displayBoard()
 	{
 		StdOut.println();
