@@ -13,14 +13,14 @@ public class TicTacToe {
 		initializePlayer();
 		initializeBoard();
 	}
-	private void initializePlayer()
+	public void initializePlayer()
 	{
 		player = new char[2];		
 		player[0] = 'O';
 		player[1] = 'X';
 		currentPlayer = 0;
 	}
-	private void initializeBoard()
+	public void initializeBoard()
 	{
 		board = new char[3][3];
 		int counter = 1;
@@ -33,7 +33,7 @@ public class TicTacToe {
 			}
 		}
 	}
-	private void makeMove(int move, int n)
+	public void makeMove(int move, int n)
 	{
 		board[move/3][move%3] = player[n];
 		
