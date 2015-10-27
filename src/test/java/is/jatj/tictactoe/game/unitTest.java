@@ -1,7 +1,9 @@
 
 package test.java.is.jatj.tictactoe.game;
 
+import static org.junit.Assert.assertEquals;
 
+import org.junit.Test;
 
 public class unitTest{
 
