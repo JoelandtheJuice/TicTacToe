@@ -54,4 +54,30 @@ public class unitTest{
 				}
 			}	
 		}
+
+		@Test
+		public void testWinnerH() {
+			game.makeMove(0, 0);
+			game.makeMove(1, 0);
+			game.makeMove(2, 0);
+			assertEquals(true, game.checkForWinner());
+			
+		}	
+		
+		@Test
+		public void testWinnerV() {
+			game.makeMove(0, 0);
+			game.makeMove(3, 0);
+			game.makeMove(6, 0);
+			assertEquals(true, game.checkForWinner());
+			
+		}
+		@Test
+		public void testWinnerA() {
+			game.makeMove(0, 0);
+			game.makeMove(4, 0);
+			game.makeMove(8, 0);
+			assertEquals(true, game.checkForWinner());
+			
+		}
 }
