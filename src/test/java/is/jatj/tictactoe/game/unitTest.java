@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import main.java.is.jatj.tictactoe.game.TicTacToe;
+
 public class unitTest{
 
 	public static void main(String args[]) {
