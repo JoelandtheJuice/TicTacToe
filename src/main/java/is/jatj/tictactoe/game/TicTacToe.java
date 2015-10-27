@@ -75,7 +75,7 @@ public class TicTacToe {
 		while(true)
 		{
 			start(game);
-			StdIn.println("Do you want to play another game? y/n ");
+			StdOut.println("Do you want to play another game? y/n ");
 			// TODO: Check if continue
 		}
 	}
