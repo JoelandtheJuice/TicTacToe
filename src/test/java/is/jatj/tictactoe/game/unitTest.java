@@ -18,7 +18,7 @@ public class unitTest{
 
 	@Test
 	public void testMakeMove() {
-		game.makeMove(1, 0);
+		game.makeMove(0, 0);
 		assertEquals('O', game.board[0][0]);
 	}
 }

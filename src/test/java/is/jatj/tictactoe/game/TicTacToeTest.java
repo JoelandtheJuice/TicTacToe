@@ -6,10 +6,10 @@ import edu.princeton.cs.algs4.StdOut;
 
 public class TicTacToeTest {
 	public char[][] board;
-	public  char[] player;
+	public char[] player;
 	public int currentPlayer;
 	
-	public TicTacToe()
+	public TicTacToeTest()
 	{
 		initializePlayer();
 		initializeBoard();
@@ -34,7 +34,7 @@ public class TicTacToeTest {
 			}
 		}
 	}
-	private void makeMove(int move, int n)
+	public void makeMove(int move, int n)
 	{
 		board[move/3][move%3] = player[n];
 		
@@ -53,7 +53,7 @@ public class TicTacToeTest {
 	};
 
  	
-	public static void start(TicTacToe game)
+	public static void start(TicTacToeTest game)
 	{
 		In in = new In();
 		while(true)
@@ -66,13 +66,12 @@ public class TicTacToeTest {
 			// TODO: Check for win
 			game.currentPlayer = (game.currentPlayer + 1) % 2;
 			StdOut.println();
-
 		}
 	}
 	public static void main(String[] args)
 	{
 		In in = new In();
-		TicTacToe game = new TicTacToe();
+		TicTacToeTest game = new TicTacToeTest();
 		while(true)
 		{
 			start(game);
