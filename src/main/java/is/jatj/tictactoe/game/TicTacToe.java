@@ -76,7 +76,6 @@ public class TicTacToe {
 		{
 			start(game);
 			StdIn.println("Do you want to play another game? y/n ");
-			String str = in.readString();
 			// TODO: Check if continue
 		}
 	}
