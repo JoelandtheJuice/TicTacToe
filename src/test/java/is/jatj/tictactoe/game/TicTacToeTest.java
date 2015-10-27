@@ -34,6 +34,20 @@ public class TicTacToeTest {
 			}
 		}
 	}
+	public boolean isMoveLegal(int move)
+	{
+		if(move < 0 || move > 8)
+		{
+			StdOut.println("Out of bounds, try again");
+			return false;
+		}
+		else if(board[move/3][move%3] == 'X' || board[move/3][move%3] == 'O')
+		{
+			StdOut.println("This move has already been made");
+			return false;
+		}
+		return true;
+	}
 	public void makeMove(int move, int n)
 	{
 		board[move/3][move%3] = player[n];
@@ -96,14 +110,20 @@ public class TicTacToeTest {
 		}
 	};
 
- 	
-	public static void start(TicTacToeTest game)
+ 	public int getInput()
 	{
 		In in = new In();
+		
+		String move = in.readString();
+		assert move.isNumber();
+			
+	}
+	public static void start(TicTacToeTest game)
+	{
 		while(true)
 		{
 			StdOut.print("Player " + game.player[game.currentPlayer] + " select you're move: ");
-			int move = in.readInt() - 1;
+			int move = getInput();
 
 			game.makeMove(move, game.currentPlayer);
 			game.displayBoard();
