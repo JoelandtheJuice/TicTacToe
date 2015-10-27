@@ -21,4 +21,10 @@ public class unitTest{
 		game.makeMove(0, 0);
 		assertEquals('O', game.board[0][0]);
 	}
+	@Test
+		public void testinitializePlayer() {
+			game.initializePlayer();
+			assertEquals('O', game.player[0]);
+			assertEquals('X', game.player[1]);
+		}
 }
