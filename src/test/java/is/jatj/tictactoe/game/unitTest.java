@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import test.java.is.jatj.tictactoe.game.TicTacToeTest;
+import main.java.is.jatj.tictactoe.game.TicTacToeController;
 
 public class unitTest{
 
@@ -14,27 +14,27 @@ public class unitTest{
 	
 	}
 
-	TicTacToeTest game = new TicTacToeTest();
+	TicTacToeController gameTest = new TicTacToeController();
 
 	// prófa að gera eitt move
 	@Test
 	public void testMakeMove() {
-		game.makeMove(0, 0);
-		assertEquals('O', game.board[0][0]);
+		char ch = gameTest.getCurrentPlayerChar();
+		gameTest.makeMove(0, ch);
+		assertEquals(ch, gameTest.getCell(0, 0));
 	}
 
 	// sjá hvort að playerinn verður til rétt
 	@Test
-		public void testinitializePlayer() {
-			game.initializePlayer();
-			assertEquals('O', game.player[0]);
-			assertEquals('X', game.player[1]);
+		public void testPlayerCharacters() {
+			assertEquals('O', gameTest.getCurrentPlayerChar());
+			gameTest.updatePlayer();
+			assertEquals('X', gameTest.getCurrentPlayerChar());
 		}
 
 		// sjá hvort að borðið verður ekki til rétt
 		@Test
-		public void testintializeBoard() {
-			game.initializeBoard();
+		public void testBoard() {
 			char c[] = new char[9];
 			c[0] = '1';
 			c[1] = '2';
@@ -53,7 +53,7 @@ public class unitTest{
 				for(int j = 0; j < 3; j++)
 				{
 					
-					assertEquals(c[co], game.board[i][j]);
+					assertEquals(c[co], gameTest.getCell(i, j));
 					co++;
 				}
 			}	
@@ -61,27 +61,27 @@ public class unitTest{
 		// test til að tjekka á winnerum í leiknum
 		@Test
 		public void testWinnerH() {
-			game.makeMove(0, 0);
-			game.makeMove(1, 0);
-			game.makeMove(2, 0);
-			assertEquals(true, game.checkForWinner());
+			gameTest.makeMove(0, 'O');
+			gameTest.makeMove(1, 'O');
+			gameTest.makeMove(2, 'O');
+			assertEquals(true, gameTest.checkForWinner());
 			
 		}	
 		
 		@Test
 		public void testWinnerV() {
-			game.makeMove(0, 0);
-			game.makeMove(3, 0);
-			game.makeMove(6, 0);
-			assertEquals(true, game.checkForWinner());
+			gameTest.makeMove(0, 'O');
+			gameTest.makeMove(3, 'O');
+			gameTest.makeMove(6, 'O');
+			assertEquals(true, gameTest.checkForWinner());
 			
 		}
 		@Test
 		public void testWinnerA() {
-			game.makeMove(0, 0);
-			game.makeMove(4, 0);
-			game.makeMove(8, 0);
-			assertEquals(true, game.checkForWinner());
+			gameTest.makeMove(0, 'O');
+			gameTest.makeMove(4, 'O');
+			gameTest.makeMove(8, 'O');
+			assertEquals(true, gameTest.checkForWinner());
 			
 		}
 
@@ -90,20 +90,20 @@ public class unitTest{
 		// röngum inputum
 		@Test
 		public void testmove() {
-			assertEquals(true, game.isMoveLegal(1));
+			assertEquals(true, gameTest.isMoveLegal(1));
 		}
 		@Test
 		public void testmovetohigh() {
-			assertEquals(false, game.isMoveLegal(11));
+			assertEquals(false, gameTest.isMoveLegal(11));
 		}
-		@Test
+		@Test 	
 		public void testmovenegative() {
-			assertEquals(false, game.isMoveLegal(-1));
+			assertEquals(false, gameTest.isMoveLegal(-1));
 		}
 		@Test
 		public void testmoveDoneBefore() {
-			game.makeMove(1, 0);
-			assertEquals(false, game.isMoveLegal(1));
+			gameTest.makeMove(1, 'O');
+			assertEquals(false, gameTest.isMoveLegal(1));
 		}
 
 		

@@ -1,10 +1,10 @@
 package main.java.is.jatj.tictactoe.game;
 
 public class TicTacToeController {
-    TicTacToeRepo gameRepo;
+    public TicTacToeRepo gameRepo;
     private static int currentPlayer;
     
-    TicTacToeController() {
+    public TicTacToeController() {
         gameRepo = new TicTacToeRepo();
         currentPlayer = 0;
     }
@@ -38,7 +38,14 @@ public class TicTacToeController {
         gameRepo.board[move/3][move%3] = getCurrentPlayerChar();
         updatePlayer();
     }
-    
+    // for testing
+    public void makeMove(int move, char ch) {
+        gameRepo.board[move/3][move%3] = ch;
+    }
+    // for testing
+    public char getCell(int row, int col) {
+    	return gameRepo.board[row][col];
+    }
     public boolean checkForWinner() {
         boolean winnerFlag = false;
         boolean rightAngle = true;
