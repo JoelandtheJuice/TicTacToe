@@ -3,55 +3,47 @@ package main.java.is.jatj.tictactoe.game;
 import java.util.Scanner;
 
 public final class TicTacToe {
-	static TicTacToeController game;
-	
-	private TicTacToe()
-	{
-		game = new TicTacToeController();
-	}
+    static TicTacToeController gameController;
 
- 	public static int getInput()
- 	{
- 		Scanner reader = new Scanner(System.in);
- 		int input = reader.nextInt() - 1;
- 		return input;
- 	}
-	private static void start()
-	{
-		while(true)
-		{
-			displayBoard();
-			System.out.print("Player " + game.getCurrentPlayerChar() + " select you're move: ");
-			int move = getInput();
-			
-			game.makeMove(move);
-			// TODO: Check for win
-			System.out.println();
+    private TicTacToe() {
+        gameController = new TicTacToeController();
+    }
 
-		}
-	}
-	private static void displayBoard()
-	{
-		char[][] board = game.getBoard();
-		for(int i = 0; i < 3; i++)
-		{
-			for(int j = 0; j < 3; j++)
-			{
-				System.out.print(board[i][j] + " ");
-			}
-			System.out.println();
-		}
-	};
+     public static int getInput() {
+         Scanner reader = new Scanner(System.in);
+         int input = reader.nextInt() - 1;
+         return input;
+     }
 
-	public static void main(String[] args)
-	{
-		TicTacToe view = new TicTacToe();
-		while(true)
-		{
-			view.start();
-			System.out.println("Do you want to play another game? y/n ");
-			// TODO: Check if continue
-			// TODO: score and switchplayer
-		}
-	}
+    private static void start() {
+        while (true) {
+            displayBoard();
+            System.out.print("Player " + gameController.getCurrentPlayerChar() + " select your move: ");
+            int move = getInput();
+
+            gameController.makeMove(move);
+            // TODO: Check for win
+            System.out.println();
+
+        }
+    }
+    private static void displayBoard() {
+        char[][] board = gameController.getBoard();
+        for (int i = 0; i < gameController.gameRepo.BOARD_SIZE; i++) {
+            for (int j = 0; j < gameController.gameRepo.BOARD_SIZE; j++) {
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println();
+        }
+    };
+
+    public static void main(String[] args) {
+        TicTacToe view = new TicTacToe();
+        while (true) {
+            view.start();
+            System.out.println("Do you want to play another game? y/n ");
+            // TODO: Check if continue
+            // TODO: score and switchplayer
+        }
+    }
 }
