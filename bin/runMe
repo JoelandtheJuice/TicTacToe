@@ -4,6 +4,6 @@ chmod +x bin/build
 chmod +x bin/reports
 chmod +x bin/play
 
-echo "  get reports: .bin/reports"
-echo "  clean $ build: .bin/build"
-echo "  execute game: .bin/play"
+echo "  get reports: ./bin/reports"
+echo "  clean $ build: ./bin/build"
+echo "  execute game: ./bin/play"
