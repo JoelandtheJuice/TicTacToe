@@ -37,9 +37,11 @@ public class TicTacToeController {
     }
 
     public void makeMove(int move) {
-        gameRepo.board[move / gameRepo.BOARD_SIZE][move % gameRepo.BOARD_SIZE]
-         = getCurrentPlayerChar();
-        updatePlayer();
+    	if(isMoveLegal(move)) {
+            gameRepo.board[move / gameRepo.BOARD_SIZE][move % gameRepo.BOARD_SIZE]
+                    = getCurrentPlayerChar();
+            updatePlayer();
+    	}
     }
     // for testing
     public void makeMove(int move, char ch) {
