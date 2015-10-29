@@ -20,7 +20,7 @@ public class TicTacToeRepo {
         score[1] = 0;
     }
     public void setScore(int n) {
-
+    	score[n]++;
     }
     public int getScore(int n) {
     	return score[n];

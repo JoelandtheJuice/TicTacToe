@@ -111,6 +111,7 @@ public class unitTest{
 			gameTest.makeMove(0, 'O');
 			gameTest.makeMove(1, 'O');
 			gameTest.makeMove(2, 'O');
+			gameTest.checkForWinner();
 			assertEquals(1, gameTest.getPlayerScore(0));
 		}
 
