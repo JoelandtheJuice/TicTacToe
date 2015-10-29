@@ -121,7 +121,7 @@ public class unitTest{
 			gameTest.makeMove(0, 'O');
 			gameTest.makeMove(1, 'O');
 			gameTest.makeMove(2, 'O');
-			assertEquals('X', gameTest.getCurrentPlayerChar[0]);
+			assertEquals('X', gameTest.getPlayerChar(0));
 		}
 
 

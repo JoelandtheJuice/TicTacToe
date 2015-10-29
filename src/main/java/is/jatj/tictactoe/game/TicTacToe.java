@@ -21,7 +21,6 @@ public final class TicTacToe {
             System.out.print("Player " + gameController.getCurrentPlayerChar()
                 + " select your move: ");
             int move = getInput();
-
             gameController.makeMove(move);
             if(gameController.checkForWinner())
             {
