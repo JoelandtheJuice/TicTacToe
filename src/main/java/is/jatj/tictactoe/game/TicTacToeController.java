@@ -3,13 +3,8 @@ package main.java.is.jatj.tictactoe.game;
 public class TicTacToeController {
     public TicTacToeRepo gameRepo;
     private static int currentPlayer;
-<<<<<<< HEAD
     
     public TicTacToeController() {
-=======
-
-    TicTacToeController() {
->>>>>>> b9a8b69318e2e62d44c829f5f04b3ca271346fd2
         gameRepo = new TicTacToeRepo();
         currentPlayer = 0;
     }
@@ -45,7 +40,6 @@ public class TicTacToeController {
          = getCurrentPlayerChar();
         updatePlayer();
     }
-<<<<<<< HEAD
     // for testing
     public void makeMove(int move, char ch) {
         gameRepo.board[move/3][move%3] = ch;
@@ -54,9 +48,6 @@ public class TicTacToeController {
     public char getCell(int row, int col) {
     	return gameRepo.board[row][col];
     }
-=======
-
->>>>>>> b9a8b69318e2e62d44c829f5f04b3ca271346fd2
     public boolean checkForWinner() {
         boolean winnerFlag = false;
         boolean rightAngle = true;
