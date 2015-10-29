@@ -26,14 +26,12 @@ public class TicTacToeController {
 
     public boolean isMoveLegal(int move) {
         if (move < 0 || move > 8) {
-            System.out.println("Out of bounds, try again");
             return false; }
         else if (gameRepo.board[move / gameRepo.BOARD_SIZE]
                 [move % gameRepo.BOARD_SIZE] == 'X'
                 || gameRepo.board[move / gameRepo.BOARD_SIZE]
                 [move % gameRepo.BOARD_SIZE] == 'O') {
-            System.out.println("This move has already been made");
-            return false;
+            		return false;
         }
         return true;
     }
