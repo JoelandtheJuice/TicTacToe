@@ -105,6 +105,14 @@ public class unitTest{
 			gameTest.makeMove(1, 'O');
 			assertEquals(false, gameTest.isMoveLegal(1));
 		}
+		@Test
+		public void checkScore() {
+			gameTest = new TicTacToeController();
+			gameTest.makeMove(0, 'O');
+			gameTest.makeMove(1, 'O');
+			gameTest.makeMove(2, 'O');
+			assertEquals(1, gameTest.getPlayerScore(0));
+		}
 
 		
 }

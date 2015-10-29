@@ -14,7 +14,7 @@ public final class TicTacToe {
          int input = reader.nextInt() - 1;
          return input;
      }
-
+     
     private static void start() {
         while (true) {
             displayBoard();
@@ -23,7 +23,10 @@ public final class TicTacToe {
             int move = getInput();
 
             gameController.makeMove(move);
-            // TODO: Check for win
+            if(gameController.checkForWinner())
+            {
+            	break;
+            }
             System.out.println();
 
         }

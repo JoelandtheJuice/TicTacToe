@@ -3,10 +3,12 @@ package main.java.is.jatj.tictactoe.game;
 public class TicTacToeRepo {
     char[][] board;
     private char[] player;
+    private int score[];
     public static final int BOARD_SIZE = 3;
 
     TicTacToeRepo() {
         board = new char[BOARD_SIZE][BOARD_SIZE];
+        score = new int[2];
         initializePlayer();
         initializeBoard();
     }
@@ -14,8 +16,15 @@ public class TicTacToeRepo {
         player = new char[2];
         player[0] = 'O';
         player[1] = 'X';
+        score[0] = 0;
+        score[1] = 0;
     }
+    public void setScore(int n) {
 
+    }
+    public int getScore(int n) {
+    	return score[n];
+    }
     public char[][] getBoard() {
         return board;
     }

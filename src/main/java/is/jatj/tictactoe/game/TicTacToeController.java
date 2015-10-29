@@ -8,6 +8,9 @@ public class TicTacToeController {
         gameRepo = new TicTacToeRepo();
         currentPlayer = 0;
     }
+    public int getPlayerScore(int n) {
+    	return gameRepo.getScore(n);
+    }
 
     public char[][] getBoard() {
         return gameRepo.getBoard();
@@ -48,6 +51,9 @@ public class TicTacToeController {
     public char getCell(int row, int col) {
     	return gameRepo.board[row][col];
     }
+    private void updateScore() {
+    	gameRepo.setScore(currentPlayer);
+    }
     public boolean checkForWinner() {
         boolean winnerFlag = false;
         boolean rightAngle = true;
@@ -80,6 +86,10 @@ public class TicTacToeController {
         }
         if (rightAngle || leftAngle) {
             winnerFlag = true;
+        }
+        
+        if(winnerFlag) {
+        	updateScore();
         }
         return winnerFlag;
     }
