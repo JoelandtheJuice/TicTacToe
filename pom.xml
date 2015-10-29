@@ -54,7 +54,7 @@
 				  </descriptorRefs>
 				  <archive>
 					<manifest>
-					  <mainClass>main.java.is.jatj.tictactoe.game.TicTacToe</mainClass>
+					  <mainClass>main.java.is.jatj.tictactoe.game.TicTacToeView</mainClass>
 					</manifest>
 				  </archive>
 				</configuration>
