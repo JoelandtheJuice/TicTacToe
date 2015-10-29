@@ -18,7 +18,8 @@ public final class TicTacToe {
     private static void start() {
         while (true) {
             displayBoard();
-            System.out.print("Player " + gameController.getCurrentPlayerChar() + " select your move: ");
+            System.out.print("Player " + gameController.getCurrentPlayerChar()
+                + " select your move: ");
             int move = getInput();
 
             gameController.makeMove(move);
@@ -37,7 +38,7 @@ public final class TicTacToe {
         }
     };
 
-    public static void main(String[] args) {
+    public static void main() {
         TicTacToe view = new TicTacToe();
         while (true) {
             view.start();
