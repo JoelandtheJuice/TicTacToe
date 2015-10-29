@@ -11,11 +11,14 @@ public class TicTacToeController {
     public int getPlayerScore(int n) {
     	return gameRepo.getScore(n);
     }
-
+    
     public char[][] getBoard() {
         return gameRepo.getBoard();
     }
-
+    
+    public char getPlayerChar(int n) {
+    	return gameRepo.getPlayer(n);
+    }
     public char getCurrentPlayerChar() {
         return gameRepo.getPlayer(currentPlayer);
     }
