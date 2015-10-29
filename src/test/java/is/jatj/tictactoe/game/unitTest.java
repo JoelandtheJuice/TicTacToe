@@ -115,5 +115,15 @@ public class unitTest{
 			assertEquals(1, gameTest.getPlayerScore(0));
 		}
 
+		@Test
+		public void testswitchplayers() {
+			gameTest = new TicTacToeController();
+			gameTest.makeMove(0, 'O');
+			gameTest.makeMove(1, 'O');
+			gameTest.makeMove(2, 'O');
+			assertEquals('X', gameTest.getCurrentPlayerChar[0]);
+		}
+
+
 		
 }
