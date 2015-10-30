@@ -19,6 +19,12 @@ public class TicTacToeRepo {
         score[0] = 0;
         score[1] = 0;
     }
+    public void switchPlayers()
+    {
+    	char temp = player[0];
+    	player[0] = player[1];
+    	player[1] = temp;
+    }
     public void setScore(int n) {
     	score[n]++;
     }
@@ -32,7 +38,7 @@ public class TicTacToeRepo {
     public char getPlayer(int n) {
         return player[n];
     }
-    private void initializeBoard() {
+    public void initializeBoard() {
         int counter = 1;
         for (int i = 0; i < BOARD_SIZE; i++) {
             for (int j = 0; j < BOARD_SIZE; j++) {

@@ -117,10 +117,8 @@ public class unitTest{
 
 		@Test
 		public void testswitchplayers() {
-			gameTest = new TicTacToeController();
-			gameTest.makeMove(0, 'O');
-			gameTest.makeMove(1, 'O');
-			gameTest.makeMove(2, 'O');
+			assertEquals('O', gameTest.getPlayerChar(0));
+			gameTest.startNewGame();
 			assertEquals('X', gameTest.getPlayerChar(0));
 		}
 

@@ -8,6 +8,11 @@ public class TicTacToeController {
         gameRepo = new TicTacToeRepo();
         currentPlayer = 0;
     }
+    public void startNewGame()
+    {
+    	gameRepo.switchPlayers();
+    	gameRepo.initializeBoard();
+    }
     public int getPlayerScore(int n) {
     	return gameRepo.getScore(n);
     }
@@ -43,12 +48,12 @@ public class TicTacToeController {
     	if(isMoveLegal(move)) {
             gameRepo.board[move / gameRepo.BOARD_SIZE][move % gameRepo.BOARD_SIZE]
                     = getCurrentPlayerChar();
-            updatePlayer();
+            updatePlayer(); // change player
     	}
     }
     // for testing
     public void makeMove(int move, char ch) {
-        gameRepo.board[move/3][move%3] = ch;
+        gameRepo.board[move / gameRepo.BOARD_SIZE][move % gameRepo.BOARD_SIZE] = ch;
     }
     // for testing
     public char getCell(int row, int col) {
