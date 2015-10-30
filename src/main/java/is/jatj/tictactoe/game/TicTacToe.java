@@ -58,8 +58,6 @@ public final class TicTacToe {
             else {
             	break;
             }
-            // TODO: Check if continue
-            // TODO: score and switchplayer
         }
     }
 }
