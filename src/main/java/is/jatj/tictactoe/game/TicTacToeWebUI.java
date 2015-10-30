@@ -14,6 +14,13 @@ public class TicTacToeWebUI {
 	}
 	public void start() {
 		displayBoard();
+		
+		get("/", new Route() {
+            public Object handle(Request request, Response response) {
+                return body(displayBoard());
+            }
+        });
+		
 		get("/move/:param", new Route() {
         	public Object handle(Request request, Response response) {
                     int move = Integer.parseInt(request.params(":param"));
@@ -27,7 +34,7 @@ public class TicTacToeWebUI {
                     gameController.updatePlayer();
                     return body(displayBoard());
         	}
-	});
+		});
 	}
 	public String body(String output)
 	{
