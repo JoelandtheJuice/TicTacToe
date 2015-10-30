@@ -42,7 +42,7 @@ public class TicTacToeRepo {
         int counter = 1;
         for (int i = 0; i < BOARD_SIZE; i++) {
             for (int j = 0; j < BOARD_SIZE; j++) {
-                board[i][j] = (char) ('0' + counter);
+                this.board[i][j] = (char) ('0' + counter);
                 counter++;
             }
         }

@@ -11,6 +11,7 @@ public class TicTacToeController {
     public void startNewGame()
     {
     	gameRepo.switchPlayers();
+    	currentPlayer = 1;
     	gameRepo.initializeBoard();
     }
     public int getPlayerScore(int n) {
@@ -48,7 +49,6 @@ public class TicTacToeController {
     	if(isMoveLegal(move)) {
             gameRepo.board[move / gameRepo.BOARD_SIZE][move % gameRepo.BOARD_SIZE]
                     = getCurrentPlayerChar();
-            updatePlayer(); // change player
     	}
     }
     // for testing
