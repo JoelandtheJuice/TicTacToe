@@ -25,11 +25,11 @@ public class TicTacToeWebUI {
         	public Object handle(Request request, Response response) {
                     int move = Integer.parseInt(request.params(":param"));
                     if(!gameController.isMoveLegal(move)) {
-                    	return body("<p>do something</p>");
+                    	return body("<p>Illegal move</p>");
                     }
                     gameController.makeMove(move);
                     if(gameController.checkForWinner()) {
-                    	return body("<p>do something</p>");
+                    	return body("<p>GJ " + gameController.getCurrentPlayerChar() + " YOU WON!</p>");
                     }
                     gameController.updatePlayer();
                     return body(displayBoard());
@@ -41,18 +41,21 @@ public class TicTacToeWebUI {
 		 String head = "<!doctype html><html>" + 
 				 "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>" + 
 				 "<head><style></style><title>JATJ - TicTactoe</title></head><body>";
+		 String gameName = "<h1>TicTactoe<h1>";
 		 String end = "</body></html>";
-		 String body = head + output + end; 
+		 String body = head + gameName + output + end; 
 		 return body;
 	}
 	public String displayBoard() {
+		
+		String css = "col-md-1 btn-group btn-group-justified";
 		String boardOutput = "";
 		int counter = 0;
 		char[][] board = gameController.getBoard();
 		for (int i = 0; i < 3; i++) {
 			boardOutput += "<div class='row'>";
 			for(int j = 0; j < 3; j++) {
-				boardOutput += "<div class='col-md-1'><a href='/move/" + counter + "'>" + board[i][j] + "</a></div>";
+				boardOutput += "<div class=" + css + "><a href='/move/" + counter + "'>" + board[i][j] + "</a></div>";
 				counter++;
 			}
 			boardOutput += "</div>";
