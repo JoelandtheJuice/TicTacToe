@@ -47,14 +47,17 @@ public class TicTacToeWebUI {
 	}
 	public String displayBoard() {
 		String boardOutput = "";
+		int counter = 0;
 		char[][] board = gameController.getBoard();
 		for (int i = 0; i < 3; i++) {
 			boardOutput += "<div class='row'>";
 			for(int j = 0; j < 3; j++) {
-				boardOutput += "<div class='col-md-1'><a href='/move/" + i + "'>" + board[i][j] + "</a></div>";
+				boardOutput += "<div class='col-md-1'><a href='/move/" + counter + "'>" + board[i][j] + "</a></div>";
+				counter++;
 			}
+			boardOutput += "</div>";
 		}
-		boardOutput += "</div>";
+		
 		return boardOutput;
 	}
 	public static void main(String[] args) {
@@ -62,8 +65,6 @@ public class TicTacToeWebUI {
 		port(getHerokuAssignedPort());
 	    
 		gameUI.start();
-		
-		
 		
 	}
 	
