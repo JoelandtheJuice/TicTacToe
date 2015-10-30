@@ -2,7 +2,7 @@ package main.java.is.jatj.tictactoe.game;
 
 public class TicTacToeController {
     public TicTacToeRepo gameRepo;
-    private static int currentPlayer;
+    public static int currentPlayer;
     
     public TicTacToeController() {
         gameRepo = new TicTacToeRepo();
@@ -28,11 +28,13 @@ public class TicTacToeController {
     public char getCurrentPlayerChar() {
         return gameRepo.getPlayer(currentPlayer);
     }
-
+    public int getCurrentPlayer()
+    {
+    	return currentPlayer;
+    }
     public void updatePlayer() {
         currentPlayer = (currentPlayer + 1) % 2;
     }
-
     public boolean isMoveLegal(int move) {
         if (move < 0 || move > 8) {
             return false; }

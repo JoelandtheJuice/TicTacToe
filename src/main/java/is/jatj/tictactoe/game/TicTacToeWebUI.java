@@ -25,11 +25,12 @@ public class TicTacToeWebUI {
         	public Object handle(Request request, Response response) {
                     int move = Integer.parseInt(request.params(":param"));
                     if(!gameController.isMoveLegal(move)) {
-                    	return body("<p>Illegal move</p>");
+                    	return body("<p>Illegal move <a href='/'>Go back</a></p>");
                     }
                     gameController.makeMove(move);
                     if(gameController.checkForWinner()) {
-                    	return body("<p>GJ " + gameController.getCurrentPlayerChar() + " YOU WON!</p>");
+                    	gameController.startNewGame();
+                    	return winBody(gameController.getCurrentPlayerChar());
                     }
                     gameController.updatePlayer();
                     return body(displayBoard());
@@ -42,9 +43,32 @@ public class TicTacToeWebUI {
 				 "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>" + 
 				 "<head><style></style><title>JATJ - TicTactoe</title></head><body>";
 		 String gameName = "<h1>TicTactoe<h1>";
+		 
+		 String notification = "<h2>Your move " + gameController.getCurrentPlayerChar() +
+				 "(Player " + gameController.getCurrentPlayer() + ")</h2>";
+		 
+		 String scoreTable = getScore();
 		 String end = "</body></html>";
-		 String body = head + gameName + output + end; 
-		 return body;
+		 String body = head + gameName + output + notification + scoreTable; 
+		 return body + end;
+	}
+	
+	public String winBody(char output)
+	{
+		 String head = "<!doctype html><html>" + 
+				 "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>" + 
+				 "<head><style></style><title>JATJ - TicTactoe</title></head><body>";
+		 String notification = "<h1>GJ " + gameController.getCurrentPlayerChar() + " YOU WON</h1>";
+		 String body = head + notification + "<a href='/'>Go back</a>";
+		 String end = "</body></html>";
+		 return body + end;
+	}
+	public String getScore()
+	{
+		String playerOne = "<p class='btn btn-info'>Player 1 has " + gameController.getPlayerScore(0) + " points</p></br>";
+		String playerTwo = "<p class='btn btn-info'>Player 2 has " + gameController.getPlayerScore(1) + " points</p></br>";
+		
+		return playerOne + playerTwo;
 	}
 	public String displayBoard() {
 		
