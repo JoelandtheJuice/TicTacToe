@@ -38,7 +38,9 @@ public class TicTacToeWebUI {
 	}
 	public String body(String output)
 	{
-		 String head = "<!doctype html><html><head><style></style><title>JATJ - TicTactoe</title></head><body>";
+		 String head = "<!doctype html><html>" + 
+				 "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>" + 
+				 "<head><style></style><title>JATJ - TicTactoe</title></head><body>";
 		 String end = "</body></html>";
 		 String body = head + output + end; 
 		 return body;
@@ -47,10 +49,12 @@ public class TicTacToeWebUI {
 		String boardOutput = "";
 		char[][] board = gameController.getBoard();
 		for (int i = 0; i < 3; i++) {
+			boardOutput += "<div class='row'>";
 			for(int j = 0; j < 3; j++) {
-				boardOutput += "<a href='/move/" + i + "'>" + board[i][j] + "</a>";
+				boardOutput += "<div class='col-md-1'><a href='/move/" + i + "'>" + board[i][j] + "</a></div>";
 			}
 		}
+		boardOutput += "</div>";
 		return boardOutput;
 	}
 	public static void main(String[] args) {
