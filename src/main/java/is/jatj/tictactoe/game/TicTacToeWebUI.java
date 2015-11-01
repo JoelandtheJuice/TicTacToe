@@ -7,13 +7,17 @@ import spark.Response;
 import spark.Route;
 public class TicTacToeWebUI {
 	TicTacToeController gameController;
+	
+	private int gameTurn;
 	// obligatory comment
+	
 	public TicTacToeWebUI()
 	{
 		gameController = new TicTacToeController();
+		gameTurn = 0;
 	}
 	public void start() {
-		displayBoard();
+		
 		
 		get("/", new Route() {
             public Object handle(Request request, Response response) {
@@ -23,6 +27,12 @@ public class TicTacToeWebUI {
 		
 		get("/move/:param", new Route() {
         	public Object handle(Request request, Response response) {
+		    if(gameTurn > 7) {
+			gameController.startNewGame();
+			gameTurn = 0;
+			return body("<p> DRAW </p>");	
+		    }
+		    gameTurn++;
                     int move = Integer.parseInt(request.params(":param"));
                     if(!gameController.isMoveLegal(move)) {
                     	return body("<p>Illegal move <a href='/'>Go back</a></p>");
