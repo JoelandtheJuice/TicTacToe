@@ -69,9 +69,9 @@ We gathered all the elements needed for the game to work and created tests to te
 ##Class diagram##
 The class diagram below is the describes the latest version of the console version. 
 
-![diagram1](docs/diagram1)
+![diagram1](https://raw.githubusercontent.com/JoelandtheJuice/TicTacToe/master/docs/diagram1.png)
 
-![diagram2](docs/diagam2)
+![diagram2](https://raw.githubusercontent.com/JoelandtheJuice/TicTacToe/master/docs/diagram2.png)
 
 This class diagram shows the current version of the web-ui implementation. It might not be obvious but the controller and repo classes are exactly the same. 
 
