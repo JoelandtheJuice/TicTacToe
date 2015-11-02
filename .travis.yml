@@ -8,7 +8,7 @@ deploy:
   file: tictactoe-1.0-SNAPSHOT-jar-with-dependencies
   skip_cleanup: true
   on:
-  tags: true
+    tags: true
     repo: JoelandtheJuice/TicTacToe
   provider: heroku
   api_key:
