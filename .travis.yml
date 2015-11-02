@@ -9,7 +9,6 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    all_branches: true
 deploy:
   provider: heroku
   api_key:
