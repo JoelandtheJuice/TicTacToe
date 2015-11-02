@@ -71,7 +71,7 @@ The class diagram below is the describes the latest version of the console versi
 
 ![diagram1](https://raw.githubusercontent.com/JoelandtheJuice/TicTacToe/master/docs/diagram1.png)
 
-![diagram2](https://raw.githubusercontent.com/JoelandtheJuice/TicTacToe/master/docs/diagram2.png)
+![diagram2](https://raw.githubusercontent.com/JoelandtheJuice/TicTacToe/master/docs/diagram2.PNG)
 
 This class diagram shows the current version of the web-ui implementation. It might not be obvious but the controller and repo classes are exactly the same. 
 
