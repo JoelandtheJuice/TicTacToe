@@ -3,66 +3,67 @@ package main.java.is.jatj.tictactoe.game;
 public class TicTacToeController {
     public TicTacToeRepo gameRepo;
     public static int currentPlayer;
-    
+
     public TicTacToeController() {
         gameRepo = new TicTacToeRepo();
         currentPlayer = 0;
     }
-    public void startNewGame()
-    {
-    	gameRepo.switchPlayers();
-    	currentPlayer = 1;
-    	gameRepo.initializeBoard();
+    public void startNewGame() {
+        gameRepo.switchPlayers();
+        currentPlayer = 1;
+        gameRepo.initializeBoard();
     }
     public int getPlayerScore(int n) {
-    	return gameRepo.getScore(n);
+        return gameRepo.getScore(n);
     }
-    
+
     public char[][] getBoard() {
         return gameRepo.getBoard();
     }
-    
+
     public char getPlayerChar(int n) {
-    	return gameRepo.getPlayer(n);
+        return gameRepo.getPlayer(n);
     }
     public char getCurrentPlayerChar() {
         return gameRepo.getPlayer(currentPlayer);
     }
-    public int getCurrentPlayer()
-    {
-    	return currentPlayer;
+    public int getCurrentPlayer() {
+        return currentPlayer;
     }
     public void updatePlayer() {
         currentPlayer = (currentPlayer + 1) % 2;
     }
     public boolean isMoveLegal(int move) {
         if (move < 0 || move > 8) {
-            return false; }
-        else if (gameRepo.board[move / gameRepo.BOARD_SIZE]
+            return false;
+            } else if (gameRepo.board[move / gameRepo.BOARD_SIZE]
                 [move % gameRepo.BOARD_SIZE] == 'X'
                 || gameRepo.board[move / gameRepo.BOARD_SIZE]
                 [move % gameRepo.BOARD_SIZE] == 'O') {
-            		return false;
+                    return false;
         }
         return true;
     }
 
     public void makeMove(int move) {
-    	if(isMoveLegal(move)) {
-            gameRepo.board[move / gameRepo.BOARD_SIZE][move % gameRepo.BOARD_SIZE]
-                    = getCurrentPlayerChar();
-    	}
+        if (isMoveLegal(move)) {
+            gameRepo.board[move / gameRepo.BOARD_SIZE]
+                                     [move % gameRepo.BOARD_SIZE]
+                                    = getCurrentPlayerChar();
+        }
     }
     // for testing
     public void makeMove(int move, char ch) {
-        gameRepo.board[move / gameRepo.BOARD_SIZE][move % gameRepo.BOARD_SIZE] = ch;
+        gameRepo.board[move / gameRepo.BOARD_SIZE]
+                                [move % gameRepo.BOARD_SIZE]
+                                = ch;
     }
     // for testing
     public char getCell(int row, int col) {
-    	return gameRepo.board[row][col];
+        return gameRepo.board[row][col];
     }
     private void updateScore() {
-    	gameRepo.setScore(currentPlayer);
+        gameRepo.setScore(currentPlayer);
     }
     public boolean checkForWinner() {
         boolean winnerFlag = false;
@@ -97,9 +98,9 @@ public class TicTacToeController {
         if (rightAngle || leftAngle) {
             winnerFlag = true;
         }
-        
-        if(winnerFlag) {
-        	updateScore();
+
+        if (winnerFlag) {
+            updateScore();
         }
         return winnerFlag;
     }

@@ -19,17 +19,16 @@ public class TicTacToeRepo {
         score[0] = 0;
         score[1] = 0;
     }
-    public void switchPlayers()
-    {
-    	char temp = player[0];
-    	player[0] = player[1];
-    	player[1] = temp;
+    public void switchPlayers() {
+        char temp = player[0];
+        player[0] = player[1];
+        player[1] = temp;
     }
     public void setScore(int n) {
-    	score[n]++;
+        score[n]++;
     }
     public int getScore(int n) {
-    	return score[n];
+        return score[n];
     }
     public char[][] getBoard() {
         return board;
