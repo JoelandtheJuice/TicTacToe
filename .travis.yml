@@ -5,7 +5,7 @@ deploy:
   provider: releases
   api_key:
     secure: AikuUIlNqWNGFDUd4eRvBaMFyX26dRJFzfu13hfcHm6a1NU6+4t8QjoqkVbgO/2LK5pbpIgUdhHe7TRSptqRptafu5sH6GFH3wiZtO072eQVDeGtXPICAn/7aTvse3gxlmgahnhAFN++pDgAY47x6PSa6w/tcTstjwjQWA8oLk62zJ2cFKqxDP/psrekjjS1Lm9qdY2dikxUk6Tlk17qzvjpJ4QO2TjJEQVx2Cc+5eZnoMLcUW2DWSMLpU7rE3VoMv6jlsV9tt1XT1/SaW1u7z4dEr7QyFSdDMQwhcm4XBCN69hbkpm7bpCzq8O+64EhUBlZt8kbCw/ZJcYO2L10MdpTXjLPPjYDSDtctxwxqSgb8/h4ed8m650cYAB/j7Cjw+DKz1+mVKTbijU0jO1fvcON1VusEWGugePIB8n9DmGSBXN7pgezghI6+Ahyt3oQEHrm719i6vvBCv1fvvq8KsS1lQS3RooMpyeiHY5OP+DikRyda+qFwL1Ogy7g+3DChNwWfUXKJr9GZxhro6QrGRSKUH5fVfESXNuTRugrtOM2S/6FhXVd/eu26R6bRnoe9PNusdY5VkIlY8lTy3M0F+ckZZp6wMx/N++uG1Hnyk0Y4zOfrpQvOeV3DY8buCWLtLl2tOhsWjHqTI9vihz+XvDlrm/5nTys9DrAlbuFmTw=
-  file: tictactoe-1.0-SNAPSHOT-jar-with-dependencies.jar
+  file: 'target/tictactoe-1.0-SNAPSHOT-jar-with-dependencies.jar'
   skip_cleanup: true
   on:
     tags: true
