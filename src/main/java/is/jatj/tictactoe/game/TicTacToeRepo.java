@@ -5,7 +5,7 @@ public class TicTacToeRepo {
     private char[] player;
     private int score[];
     public static final int BOARD_SIZE = 3;
-
+    // constructor
     TicTacToeRepo() {
         board = new char[BOARD_SIZE][BOARD_SIZE];
         score = new int[2];
