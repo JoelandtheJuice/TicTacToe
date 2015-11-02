@@ -5,6 +5,7 @@ import static spark.Spark.*;
 import spark.Request;
 import spark.Response;
 import spark.Route;
+
 public class TicTacToeWebUI {
 	TicTacToeController gameController;
 	private int gameTurn;
@@ -96,8 +97,18 @@ public class TicTacToeWebUI {
 	public static void main(String[] args) {
 		TicTacToeWebUI gameUI = new TicTacToeWebUI();
 		port(getHerokuAssignedPort());
-	    
-		gameUI.start();
+        
+        if (args.length == 0) {
+            gameUI.start();
+            try {
+                String url = "http://127.0.0.1:" + getHerokuAssignedPort();
+                java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+            } catch (java.io.IOException e) {
+                System.out.println(e.getMessage());
+            }
+        } else {
+           gameUI.start();
+           }
 		
 	}
 	
@@ -106,6 +117,6 @@ public class TicTacToeWebUI {
 	    if (processBuilder.environment().get("PORT") != null) {
 	    	return Integer.parseInt(processBuilder.environment().get("PORT"));
 	    }
-	return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
+	return 5000; //return default port if heroku-port isn't set (i.e. on localhost)
 	}
 }
