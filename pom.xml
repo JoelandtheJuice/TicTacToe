@@ -65,7 +65,22 @@
 					  <goal>single</goal>
 					</goals>
 				  </execution>
-				</executions>
+				<execution>
+                    <id>build-b</id>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <mainClass>main.java.is.jatj.tictactoe.game.TicTacToe</mainClass>
+                            </manifest>
+                        </archive>
+                        <finalName>TicTacToe-console-build</finalName>
+                    </configuration>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>single</goal>
+                    </goals>
+                </execution>
+            </executions>
 			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
