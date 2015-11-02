@@ -2,15 +2,15 @@ language: java
 jdk:
 - oraclejdk8
 deploy:
-  provider: releases
-  user: Kristjanjoelk
-  password: 
-    secure: 5d3242dceacbb3032b145fd4a499d7a8097498fb
-  file: tictactoe-1.0-SNAPSHOT-jar-with-dependencies
-  skip_cleanup: true
-  on:
-    tags: false
   provider: heroku
   api_key:
     secure: CthNov0sPXGJGMLDna0oDCuYZaAaJ07VlFlgRJFejnYMfgV2hZiVVlX3wuxkOp3uifDmqB5GXIR63F3jHZfu7xCOdDNiA0+W0Ut8cwUsIoE7MUcCYz1/JbJdjYgs4BdVO4dNG3GaZpNSZXngVVZqpk5pB1ZceRs3sCrNoCUmy2tHr9gdDcE7MY7VOFdAU1ryPJITwO7A8uFXTmSyWC1i91duotegSdiaabmrys59gIFLCet+wLn1U+fHk3Dbj2n1kKdZgILQDxr8WDDi05oyOEAdUufakJim2+oZTNcC6+CZjbzVzSGvgZLKDLRaGUX3rMzGcjqdsrwF489HVGFHg/uYvHLm9Ba3I5LP0E+5D7Eya1WrV4zKfuTPi0xBEGwztQlBvsRK7Q21bcTe+gVEl0b+eSATwaYnvc8q9hxLFz6PuiPaKwe/fPHgpFluYU5GiWuL4aETA2/bVH9xUXVW6hmjG1tknBn/Wl6ZE9QiOa1rtaLPjhUE89QHJQr/hVFgjDsJMAoM5cbrwR0R23vyQ410Ivv+3ae/8vn6MYFAGcCUZOv5YqTb1a2YsJqZK5OOYsjmDqOJthlCrBypbFNfD8vawdKZZ9wcx9vBIcn0xzFMzqXTkX7UQJ/SdpV7yo99hZ6A7vX2+gTmha+wt9EQhUD+xbE95hovMaNENTCRg+g=
   app: jatj-tictactoe
+deploy:
+  provider: releases
+  api_key:
+   secure: 4cr6vZwUkk+pyYE77nITXqBQ+30ivbzJb5k6RlNLumQlGdQMIdBGMUPX0Vfysda877vlegNKCee+3OCksG20SQMKa73EqIWGDmngaPYEKqOLa3zDcl32nFT/UokokEqrtqAd0gjxgjvNq3LwPWzp7Q01yceZVpCID1lgFp6/NElD42+R2b/wUK6LN1noJAeelmSnPvnCDiCEoLs877nQeElmO8GjZHROvtP6rNzuWBgwwDHbj+v0sanyvX7Rbqn+zIT98f4N+vxauog6MUiPEb/vSX60jf8ms6DK2yHpQBtIdsJqgg38J7o2oRd9pdYRXdV0ARk/+K64eWoq/2xPDz5ne3xG0JzIl7g2rUo/SVysYq1COA5j75hpA0CYEAEK1ZuE0gffLcx+/f9tylmBkgzhW+RqJCyl+R4JHuqhR9XlkCFsFX/VSI+gHmntqRID9LSlOadyUIIS9YIQIdHmCSdiZq4PbllzOFkyA2pyy3PAC58x6TVCwU9mBm5CZ8QTUy1np6N2gvu5JGKBxKxSKRgP2i1L1EPLj/gQpSeeo+PZgL103nVuLEdqMWDh8Genry6pZQeI2malY3D6dklHeb8oaIejeZRoAXJkGzUN+zVGXMXlgKJ5fh+b5ghvOVmtDJGMJjIVEl6fAJzGkslfZpowX8geOLnPgNcifk9d7t4=
+  file: tictactoe-1.0-SNAPSHOT-jar-with-dependencies
+  skip_cleanup: true
+  on:
+    tags: true
