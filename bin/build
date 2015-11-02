@@ -5,5 +5,5 @@ if [ $? -ne 0 ]; then
     echo "build failed"
     exit 1
 fi
-cp target/tictactoe-jar-with-dependencies.jar $1
+cp target/tictactoe-1.0-SNAPSHOT-jar-with-dependencies $1
 mvn clean
