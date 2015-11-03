@@ -7,7 +7,8 @@ before_script:
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to startgit 
 
- script: ./bin/travisTest
+script: ./bin/travisTest
+
 deploy:
   provider: releases
   api_key:
