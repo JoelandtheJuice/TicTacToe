@@ -9,11 +9,13 @@ import spark.Route;
 public class TicTacToeWebUI {
 	TicTacToeController gameController;
 	private int gameTurn;
+	public int port;
 	// obligatory comment
 	
 	public TicTacToeWebUI()
 	{
 		gameController = new TicTacToeController();
+		port = getHerokuAssignedPort();
 		gameTurn = 0;
 	}
 	public void start() {
@@ -116,6 +118,6 @@ public class TicTacToeWebUI {
 	    if (processBuilder.environment().get("PORT") != null) {
 	    	return Integer.parseInt(processBuilder.environment().get("PORT"));
 	    }
-	return 5000; //return default port if heroku-port isn't set (i.e. on localhost)
+	return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
 	}
 }
