@@ -19,79 +19,78 @@ public class TicTacToeWebUI {
 	public void start() {
 		get("/", new Route() {
             public Object handle(Request request, Response response) {
-                return body(displayBoard());
+                return body("", displayBoard());
             }
         });
 		
 		get("/move/:param", new Route() {
         	public Object handle(Request request, Response response) {
-        		if(gameTurn > 8) {
+        		if(gameTurn > 7) {
 					gameController.startNewGame();
 					gameTurn = 0;
-					return body("<p> DRAW <a href='/'>Go back</a></p>");	
+					return body("DRAW!", displayBoard());	
 			    }
 			    gameTurn++;
                     int move = Integer.parseInt(request.params(":param"));
                     if(!gameController.isMoveLegal(move)) {
-                    	return body("<p>Illegal move <a href='/'>Go back</a></p>");
+                    	return body("That's an illegal move! Please try again.", displayBoard());
                     }
                     gameController.makeMove(move);
                     if(gameController.checkForWinner()) {
-                    	char winner = gameController.getCurrentPlayerChar();
+                        int winner = gameController.getCurrentPlayer();
                     	gameController.startNewGame();
                     	gameTurn = 0;
-                    	return body("<p>GJ " + winner + 
-                    			" YOU WON <a href='/'>Go back for more</a></p>");
+                    	return body("Player " + winner + " wins!", displayBoard());
                     }
                     gameController.updatePlayer();
-                    return body(displayBoard());
+                    return body("", displayBoard());
         	}
 		});
 	}
 	// Assembles the body
-	public String body(String output) {
-		 String head = "<!doctype html><html>" + 
-				 "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>" + 
-				 "<head><style></style><title>JATJ - TicTacToe</title>" + 
-				 "<div><div style='width: 50%; margin: 0 auto'></head><body>";
-		 String gameName = "<h1>TicTactoe<h1>";
-		 
-		 String notification = "<h2>Your move " + gameController.getCurrentPlayerChar() +
-				 " (Player " + gameController.getCurrentPlayer() + ")</h2>";
-		 
+	public String body(String endMessage, String board) {
+         String head = "<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'><style>*{border-radius: 0 !important;}.center {float: none;margin-left: 20%;margin-right: 20%;}.board {padding-top: 5%;padding-bottom:5%;}.center table {margin: 0 auto;text-align: left;}.square{background-color: #EBEBEB;width:12vw;height:12vw;}.square:hover {background-color: gray;}td a {border-color:#888;display:block;border-style: solid;border-width:1px;}td a p {vertical-align: middle;text-align:center;font-size: 12vw;width:12vw;height:12vw;margin-bottom:-10px;padding-bottom:10%;}td a:hover {text-decoration:none;}.alerthover:hover {border-color: rgba(240,240,240,0.7);background-color: rgba(240,240,240,0.7);text-decoration:none;}</style><title>JATJ - TicTacToe</title></head><body><div class='col-lg-12'>";
+         String notification = "<div class='alert alert-info' role='alert'><p>Your move " + gameController.getCurrentPlayerChar() + "(Player " + gameController.getCurrentPlayer() + ")</p></div>";
+		 String alert = "<div class='alert alert-warning alerthover' role='alert'><p>" + endMessage + "</p></div>";
+         
 		 String scoreTable = getScore();
-		 String end = "</div></div></body></html>";
-		 String body = head + gameName + output + notification + scoreTable; 
+         String end = "</div></div></body></html>";
+         String body = head + board + alert + notification + scoreTable;
+         if (endMessage == "") {
+                body = head + board + notification + scoreTable; 
+                return body + end;
+         }
 		 return body + end;
 	}
 	public String getScore() {
-		String playerOne = "<p class='btn btn-info'>Player 1 has " + gameController.getPlayerScore(0) + " points</p></br>";
-		String playerTwo = "<p class='btn btn-info'>Player 2 has " + gameController.getPlayerScore(1) + " points</p></br>";
+        String scoreHeader = "<div class='panel panel-default'><div class='panel-heading'><h3 class='panel-title'>Scores</h3></div><ul class='list-group'><li class='list-group-item'><span class='badge'>";
+        
+        String playerOne = gameController.getPlayerScore(0) + " points</span>Player 0</li><li class='list-group-item'><span class='badge'>";
+        String playerTwo = gameController.getPlayerScore(1) + " points</span>Player 1</li></ul></div>";
 		
-		return playerOne + playerTwo;
+		return scoreHeader + playerOne + playerTwo;
 	}
 	public String displayBoard() {
 		
 		String css = "class='col-md-1'";
 		String style = " style='border-style:solid'";
 		String aStyle = "style='display:block;'";
-		String boardOutput = "";
+		String boardOutput = "<div class='col-md-6 center'><div class='board'><table>";
 		int counter = 0;
 		char[][] board = gameController.getBoard();
 		for (int i = 0; i < 3; i++) {
-			boardOutput += "<div class='row'>";
+			boardOutput += "<tr id='row'>";
 			for(int j = 0; j < 3; j++) {
 				if(board[i][j] == 'X' || board[i][j] == 'O') {
-					boardOutput += "<div " + css + style +"><a href='/move/" + counter + "'>" + 
-				board[i][j] + "</a></div>";
+                    boardOutput += "<td class='square'><a href='/move/" + counter + "' class='square'><p>" + board[i][j] + "</p></a></td>";
 				} else {
-					boardOutput += "<div " + css + style +"><a " + aStyle + " href='/move/" + counter + "'>&nbsp;</a></div>";
+                    boardOutput += "<td class='square'><a href='/move/" + counter + "' class='square'></a></td>";
 				}
 				counter++;
 			}
-			boardOutput += "</div>";
+            boardOutput += "</tr>"; 
 		}
-		
+        boardOutput += "</table></div></div><div class='col-md-6 center'>";
 		return boardOutput;
 	}
 	public static void main(String[] args) {
